@@ -1,1 +1,1 @@
-magick montage D:\Users\shinichi\Documents\GitHub\VRChat\images\IMG_* -tile 4x4 D:\Users\shinichi\Documents\GitHub\VRChat\images\output.jpg
+magick montage D:\Users\shinichi\Documents\GitHub\VRChat\images\IMG_* -tile 4x4 -geometry 512x512+0+0 D:\Users\shinichi\Documents\GitHub\VRChat\images\output.jpg
