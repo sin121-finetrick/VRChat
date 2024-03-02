@@ -14,4 +14,4 @@ outputDirectory='D:\Users\shinichi\Documents\GitHub\VRChat\g\'
 sortedFiles=$(ls -r $inputDirectory)
 
 # montageコマンドを実行
-montage $sortedFiles -geometry 512x512+0+0 -tile 8x8 $outputDirectory/output_tile_%d.jpg
+montage $sortedFiles -geometry 512x512+0+0 -tile 4x4 $outputDirectory/output_tile_%d.jpg
