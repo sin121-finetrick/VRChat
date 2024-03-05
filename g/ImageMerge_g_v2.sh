@@ -6,6 +6,7 @@
 
 # ソート対象のディレクトリ
 inputDirectory='D:\Users\shinichi\Documents\GitHub\VRChat\g\src\'
+cd $inputDirectory
 
 # 出力ディレクトリ
 outputDirectory='D:\Users\shinichi\Documents\GitHub\VRChat\g\'
