@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spreadsheet Data</title>
+</head>
+<body>
+  <div id="output"></div>
+  <script>
+    fetch('https://script.google.com/macros/s/AKfycbyJSHoVifp7tEHiONaFvRBY2VcI6A3NJxHxEihwNWUtUV-4GHF5P5bOHs82rJWRL2yr/exec') // ここにGASのURLを指定
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('output').textContent = data.value;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('output').textContent = "データの取得に失敗しました。";
+      });
+  </script>
+</body>
+</html>
