@@ -6,9 +6,8 @@
 <body>
   <div id="output"></div>
   <script>
-    fetch('https://script.google.com/macros/s/AKfycbyJSHoVifp7tEHiONaFvRBY2VcI6A3NJxHxEihwNWUtUV-4GHF5P5bOHs82rJWRL2yr/exec') // ここにGASのURLを指定
-/*      .then(response => response.json())*/
-      .then(response => response)
+    fetch('https://script.google.com/macros/s/AKfycbw_V63lAsC6a7ndL4-ebYZrGco-cd7DajT-ZgCpb25wvBHutpCuMWX49fsbrAN5XoXE/exec') // ここにGASのURLを指定
+      .then(response => response.json())
       .then(data => {
         document.getElementById('output').textContent = data.value;
       })
