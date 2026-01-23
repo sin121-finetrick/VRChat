@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>現在時刻表示</title>
+</head>
+<body>
+
+<script>
+/**
+ * 実行した瞬間の時刻を HH:ii:ss 形式で表示する
+ */
+(function() {
+    // 1. 時刻を取得して文字列を作る
+    const now = new Date();
+    const hh = String(now.getHours()).padStart(2, '0');
+    const ii = String(now.getMinutes()).padStart(2, '0');
+    const ss = String(now.getSeconds()).padStart(2, '0');
+    const timeString = `${hh}:${ii}:${ss}`;
+
+    // 2. 表示用の要素を作成
+    const span = document.createElement('span');
+    span.textContent = timeString;
+
+    // 見やすいようにスタイルを設定
+    span.style.fontSize = '32px';
+    span.style.fontFamily = 'monospace';
+    span.style.fontWeight = 'bold';
+
+    // 3. 画面（body）に表示する
+    // bodyが存在することを確認してから追加する
+    if (document.body) {
+        document.body.appendChild(span);
+    } else {
+        // bodyがまだ作られていない場合は直接書き出す
+        document.write(span.outerHTML);
+    }
+})();
+</script>
+
+</body>
+</html>
