@@ -1,3 +1,4 @@
+<script src="time.js">
 /**
  * 現在時刻を HH:mm:ss 形式で取得して表示するスクリプト
  */
@@ -17,3 +18,4 @@ function displayCurrentTime() {
 
 // 実行
 displayCurrentTime();
+</script>
