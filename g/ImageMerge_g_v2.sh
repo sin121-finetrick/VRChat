@@ -1,18 +1,39 @@
 #!/bin/bash
 
-# srcディレクトリに移動し
-# ../ImageMerge_g_v2.bash
-# 上記コマンドを実行
-
-# ソート対象のディレクトリ
+# 設定
 inputDirectory='D:\Users\shinichi\Documents\GitHub\VRChat\g\src\'
-cd $inputDirectory
-
-# 出力ディレクトリ
 outputDirectory='D:\Users\shinichi\Documents\GitHub\VRChat\g\'
+tile_size=16 # 4x4のタイル
 
-# ソートして処理する
-sortedFiles=$(ls -r $inputDirectory)
+cd "$inputDirectory" || exit
 
-# montageコマンドを実行
-montage $sortedFiles -geometry 512x512+0+0 -tile 4x4 $outputDirectory/output_tile_%d.jpg
+# ファイル一覧を取得（逆順）
+files=( $(ls -r) )
+total_files=${#files[@]}
+# 作成されるべき総タイル数を計算
+total_tiles=$(( (total_files + tile_size - 1) / tile_size ))
+
+echo "Total files: $total_files"
+echo "Total tiles to create: $total_tiles"
+echo "----------------------------------------"
+
+tile_index=0
+for (( i=0; i<$total_files; i+=$tile_size )); do
+    # 16枚分（または残り全分）を配列から取り出す
+    batch=("${files[@]:i:tile_size}")
+    
+    # 進捗表示（例：[1/50] Processing...）
+    current_tile=$((tile_index + 1))
+    echo "[$current_tile/$total_tiles] Generating tile: output_tile_${tile_index}.jpg"
+
+    # 16枚だけでmontageを実行（-monitorは不要になります）
+    montage "${batch[@]}" -geometry 512x512+0+0 -tile 4x4 "${outputDirectory}output_tile_${tile_index}.jpg"
+    
+    ((tile_index++))
+done
+
+echo "----------------------------------------"
+echo "すべての処理が完了しました。"
+
+# キー入力を待機する設定
+read -p "何かキーを押すとウィンドウを閉じます..."
